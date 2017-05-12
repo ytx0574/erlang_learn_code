@@ -10,7 +10,7 @@
 -author("johnson").
 
 %% API
--export([test/0, test1/0, test2/0, test3/0, map/2, test4/0]).
+-export([test/0, test1/0, test2/0, test3/0, map/2, test4/0, max/2]).
 
 
 %% 列表推导, test 为返回X * 2的元素列表, X的从L中提取
@@ -45,6 +45,10 @@ test4() ->
 %% lists:map(fun(X) -> X * 0 end, [1, 2, 4]).
 %% test:map(fun(X) -> X * 0 end, [1, 2, 4]).
 %% test:test4().        [4,k]
+
+
+max(X, Y) when X > Y -> X;
+max(X, Y) -> Y.
 
 
 
