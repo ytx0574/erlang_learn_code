@@ -42,7 +42,7 @@ my_tuple_to_list1(I, T, L) ->
 %%练习题2
 %% 计算4444444次执行F函数的时间
 my_time_func(F) ->
-  Now1 = erlang:now(),
+%%  Now1 = erlang:now(),
   T1 = calendar:local_time(),
   L = lib_misc:for(1, 4444444, F),
   T2 = calendar:local_time(),
@@ -85,7 +85,7 @@ filter_case(P, [H | T]) ->
     true -> [H | filter_case(P, T)];
     false -> filter_case(P, T)
   end;
-filter_case(P, []) -> [].
+filter_case(_, []) -> [].
 
 filter(F, L) ->
 
