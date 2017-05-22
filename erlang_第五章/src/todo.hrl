@@ -1,0 +1,1 @@
+-record(todo, {status = 22, who = johnson, text = f, string = "hello world", number = 983, sex}).
