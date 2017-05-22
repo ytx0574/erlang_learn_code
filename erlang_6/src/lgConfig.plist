@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>kKeyword</key>
+	<string>iOS</string>
+	<key>kUpdateInterval</key>
+	<integer>600</integer>
+	<key>kUpdatePage</key>
+	<integer>10</integer>
+	<key>kUpdatePageInterval</key>
+	<integer>2</integer>
+	<key>kUseAnalogData</key>
+	<false/>
+</dict>
+</plist>
