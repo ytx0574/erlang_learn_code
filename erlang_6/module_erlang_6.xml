@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_erlang_6" default="compile.module.erlang_6">
+  <dirname property="module.erlang_6.basedir" file="${ant.file.module_erlang_6}"/>
+  
+  <property name="module.jdk.home.erlang_6" value="${jdk.home.erlang_19}"/>
+  <property name="module.jdk.bin.erlang_6" value="${jdk.bin.erlang_19}"/>
+  <property name="module.jdk.classpath.erlang_6" value="jdk.classpath.erlang_19"/>
+  
+  <property name="compiler.args.erlang_6" value="-encoding UTF-8 -source 1.3 -target 1.3 ${compiler.args}"/>
+  
+  <property name="erlang_6.output.dir" value="${module.erlang_6.basedir}/out/production/erlang_6"/>
+  <property name="erlang_6.testoutput.dir" value="${module.erlang_6.basedir}/out/test/erlang_6"/>
+  
+  <path id="erlang_6.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="erlang_6.module.production.classpath">
+    <path refid="${module.jdk.classpath.erlang_6}"/>
+  </path>
+  
+  <path id="erlang_6.runtime.production.module.classpath">
+    <pathelement location="${erlang_6.output.dir}"/>
+  </path>
+  
+  <path id="erlang_6.module.classpath">
+    <path refid="${module.jdk.classpath.erlang_6}"/>
+    <pathelement location="${erlang_6.output.dir}"/>
+  </path>
+  
+  <path id="erlang_6.runtime.module.classpath">
+    <pathelement location="${erlang_6.testoutput.dir}"/>
+    <pathelement location="${erlang_6.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.erlang_6">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.erlang_6">
+    <patternset refid="excluded.from.module.erlang_6"/>
+  </patternset>
+  
+  <path id="erlang_6.module.sourcepath">
+    <dirset dir="${module.erlang_6.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.erlang_6" depends="compile.module.erlang_6.production,compile.module.erlang_6.tests" description="Compile module erlang_6"/>
+  
+  <target name="compile.module.erlang_6.production" depends="register.custom.compilers" description="Compile module erlang_6; production classes">
+    <mkdir dir="${erlang_6.output.dir}"/>
+    <javac2 destdir="${erlang_6.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.erlang_6}/javac">
+      <compilerarg line="${compiler.args.erlang_6}"/>
+      <bootclasspath refid="erlang_6.module.bootclasspath"/>
+      <classpath refid="erlang_6.module.production.classpath"/>
+      <src refid="erlang_6.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.erlang_6"/>
+    </javac2>
+    
+    <copy todir="${erlang_6.output.dir}">
+      <fileset dir="${module.erlang_6.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.erlang_6.tests" depends="register.custom.compilers,compile.module.erlang_6.production" description="compile module erlang_6; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.erlang_6" description="cleanup module">
+    <delete dir="${erlang_6.output.dir}"/>
+    <delete dir="${erlang_6.testoutput.dir}"/>
+  </target>
+</project>

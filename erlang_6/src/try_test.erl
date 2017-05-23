@@ -116,7 +116,7 @@ test_all_fun(X) ->
 
 
 %% 栈跟踪      用元组展示， 每一条信息都包含调用类 方法 方法参数个数 类文件 行号
-dem3() ->
+demo3() ->
   try generate_exception(5)
 
   catch
