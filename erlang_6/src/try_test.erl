@@ -90,7 +90,7 @@ my_func(X) ->
 
 test_my_func(X) ->
   try my_func(X) of
-    X -> {tt, X}
+    X -> {tt, X}  %%此处有内容 try后面必须跟上of
   catch
   throw:{thisError, X} -> {thisError, X};
   throw:{otherError, X} -> {otherError, X}
