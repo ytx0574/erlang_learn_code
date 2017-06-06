@@ -10,7 +10,7 @@
 -author("johnson").
 
 %% API
--export([test/0]).
+-export([test/0, revertBinary/1]).
 
 
 test() ->
@@ -23,3 +23,9 @@ test() ->
     <<X:4, Y:7, Z:5>> = Mem.
 
 %%    XYZ和上面的RGB值一样， 只需要保证长度一致即可， 所有可以是 <<X:4, Y:7, Z:3>>, 但是对应的值就不一样了
+
+revertBinary(Binary) ->
+    if
+        is_binary(Binary) -> {};
+        true -> "not is binary, please try agen"
+    end.
