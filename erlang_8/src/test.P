@@ -1,0 +1,40 @@
+-file("test.erl", 1).
+
+-module(test).
+
+-author("johnson").
+
+-export([test/0,testBool/0]).
+
+test() ->
+    [ 
+     begin
+         M = abs(X),
+         if
+             M rem 2 =:= 0 ->
+                 M * 8;
+             true ->
+                 M div 2
+         end
+     end ||
+         X <- [- 1,7,- 6]
+    ].
+
+testBool() ->
+    if
+        not true ->
+            "not true -> false";
+        true and flase ->
+            "true and flase -> false";
+        true or false ->
+            "true or false -> true";
+        true xor false ->
+            "true xor false -> true";
+        true xor true ->
+            "true xor true -> false";
+        true ->
+            []
+    end.
+
+
+
