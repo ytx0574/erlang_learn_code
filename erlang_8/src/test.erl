@@ -25,8 +25,19 @@ test() ->
 
 testBool() ->
   if
-    not true -> "xxxxxx";
+    not true -> "not true -> false";
+    true and flase -> "true and flase -> false";
+    true or false -> "true or false -> true";
+    true xor false -> "true xor false -> true";        %%异或， 左右两边相同时为false， 不同为true
+    true xor true -> "true xor true -> false";
     true -> []
   end.
+
+
+%%  字符串
+%%  和C差不多， 字符串其实是char数组（char对应的Unicode编码）
+
+
+
 
 
