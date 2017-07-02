@@ -110,6 +110,13 @@ escape() ->
 %% 包含文件      erlang包含文件的扩展名为hrl  所有包含时要让预处理器能找到 file应该包含一个相对路径或绝对路径
 - include_lib("hh.hrl").
 
+testIncludeLib()  ->
+  X = #yx{},
+  Ref = erlang:make_ref(),           %%reference, erlang唯一的全局数据类型,由erlang:make_ref/0创建, 它的值不会出现重复
+  X1 = X#yx{status = 'abc'}.
+
+
+
 -undef(Macro).
 
 

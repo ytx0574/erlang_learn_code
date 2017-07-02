@@ -1,0 +1,1 @@
+-record(yx, {status = 11, name = 11, abc}).

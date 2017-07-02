@@ -17,10 +17,18 @@
 
 %%  预定义宏  类似C语言中宏
 
+-define(Constant(Value), Value * Value).
+
+
+
+
+%%-undef(debug_flag).           %%即使c/2编译带有debug_flag宏，也可以在这里取消它的定义
+%%-define(debug_flag, _).         %%也可以不用c/2编译带debug_flag宏，这里直接定义也是可以的
+
 
 -ifdef(debug_flag).
 
--define(DEBUG(X), io:format("DEBUG  ~p:~p ~p~n", [?MODULE, ?LINE, X])).
+-define(DEBUG(X), io:format("DEBUG ~p  ~p:~p ~p~n", [?FILE, ?MODULE, ?LINE, X])).            %% ?FILE文件名 ?MODULE模块名  ?LINE当前行号
 
 -else.
 
@@ -29,13 +37,20 @@
 -endif.
 
 
+
+
 loop(0) ->
+  _Value = ?Constant(99),
+%%  _Value;
   done;
 loop(N) ->
   ?DEBUG(N),
   loop(N - 1).
 
-%% 编译时，带入debug_flag标签 c(ml, {d, debug_flag}).        编译时， 一定要输出{ok，module}，才算是编译成功
+%% 编译时，带入debug_flag标签 c(ml, {d, debug_flag}).        编译时， 一定要输出{ok，module}，才算是编译成功，此处的{d, debug_flag}。d不能变，只能为d
+
+%%-define有两个参数，前面定义宏的名称，后面定义内容，如果是表达式的话，说明宏有输出值
+%%erlang的宏跟C的宏几乎差不多
 
 
 
